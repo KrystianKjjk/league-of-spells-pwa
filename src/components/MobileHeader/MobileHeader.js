@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components'
 import Colors from '../../Colors';
 
@@ -10,8 +10,7 @@ const MobileHeader = props => {
 
                 <RightItem >
                     xd
-
-                {props.children}
+                    {props.children}
                 </RightItem>
             </StyledHeader>
         </Value>
@@ -21,7 +20,7 @@ export default MobileHeader
 
 const Value = styled.div`
   position: absolute;
-  width: 100%
+  width: 100%;
 `
 const StyledHeader = styled.div`
 
