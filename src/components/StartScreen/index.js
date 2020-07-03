@@ -1,3 +1,3 @@
-import MainScreen from './MainScreen.js.js';
+import StartScreen from './StartScreen.js';
 
-export default MainScreen;
+export default StartScreen;

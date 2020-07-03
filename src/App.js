@@ -1,10 +1,10 @@
 import React from 'react';
 
 import './App.css';
-import Speech from './components/Speech/Speech';
-import MobileHeader from './components/MobileHeader/MobileHeader';
+import Speech from './components/Speech';
+import MobileHeader from './components/MobileHeader';
 import styled from "styled-components";
-import StartScreen from './components/StartScreen/startScreen';
+import StartScreen from './components/StartScreen';
 
 const Container = styled.div`
   /* display: flex; */
