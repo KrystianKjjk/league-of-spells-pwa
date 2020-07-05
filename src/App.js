@@ -5,6 +5,10 @@ import Speech from './components/Speech';
 import MobileHeader from './components/MobileHeader';
 import styled from "styled-components";
 import Home from './Pages/Home';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useWidth } from './MyHooks/useWidth';
+import BrowserHeader from './components/BrowserHeader/BrowserHeader';
+import ChooseChampions from './Pages/ChooseChampions';
 
 const Container = styled.div`
   /* display: flex; */
@@ -13,16 +17,33 @@ const Container = styled.div`
 `;
 
 function App() {
+
+  const header = useWidth(500, <MobileHeader />, <BrowserHeader />).deviceValues;
+
   return (
-    <Container >
-      <MobileHeader />
-      {/* <Speech /> */}
-      <Home />
-    </Container>
+    <Router>
+      {header}
+      <Container >
+        <Switch>
+          <Route path="/choose-champions">
+            <ChooseChampions />
+          </Route>
+          <Route exact path="/" >
+            <Home />
+          </Route>
+        </Switch>
+      </Container>
+    </Router>
   );
 }
 
 export default App;
+
+// <Container >
+//   <MobileHeader />
+//   {/* <Speech /> */}
+//   <Home />
+// </Container>
 
 
 // const initialMovies = {

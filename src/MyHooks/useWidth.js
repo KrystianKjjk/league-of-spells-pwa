@@ -18,7 +18,5 @@ export function useWidth(threshold, smallDeviceValues, hugeDeviceValues) {
         };
     }, [smallDeviceValues, hugeDeviceValues, compare, threshold]);
 
-    return {
-        deviceValues
-    };
+    return deviceValues;
 }

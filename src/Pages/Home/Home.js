@@ -6,9 +6,11 @@ import { Container, Circle, Triangle } from './style'
 import { Button } from '../../GlobalStyles';
 import { useSelector, useDispatch } from 'react-redux';
 import actions from './Duck/actions'
+
 //ostatecznie chyba lepiej zostawic stan w hookach jako useState...
+
 const Home = () => {
-    const cycleDiameter = useWidth(500, "65vw", "45vw").deviceValues;
+    const cycleDiameter = useWidth(500, "65vw", "45vw");
 
     const distanceV = useSelector(state => state.distance.distance)
     const startedPressedV = useSelector(state => state.startedPressed.startedPressed)
@@ -34,9 +36,6 @@ const Home = () => {
         console.log("START")
         setStartPressed()
 
-        if (distanceV === 50) {
-            resetStartPressed();
-        }
     }
 
     // const [distance, setDistance] = useState(0);
