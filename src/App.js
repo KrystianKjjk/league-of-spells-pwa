@@ -6,6 +6,11 @@ import MobileHeader from './components/MobileHeader';
 import styled from "styled-components";
 import StartScreen from './components/StartScreen';
 
+import { createStore } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
+
+
+
 const Container = styled.div`
   /* display: flex; */
   width: 100wh;

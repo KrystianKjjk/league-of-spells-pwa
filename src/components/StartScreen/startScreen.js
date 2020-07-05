@@ -29,12 +29,10 @@ const StartScreen = props => {
             setStartedPressed(false);
         }
     }
-    console.log("width : ", cycleDiameter);
-
 
     return (
         <Container>
-            <Circle diameter={cycleDiameter} rotation={!StartedPressed}>
+            <Circle diameter={cycleDiameter} isRotating={!StartedPressed}>
                 <Triangle style={{ top: distanceAsPercent(), right: distanceAsPercent(), transform: 'rotate(-135deg)' }} />
                 <Triangle style={{ bottom: distanceAsPercent(), right: distanceAsPercent(), transform: 'rotate(-45deg)' }} />
                 <Triangle style={{ bottom: distanceAsPercent(), left: distanceAsPercent(), transform: 'rotate(45deg)' }} />

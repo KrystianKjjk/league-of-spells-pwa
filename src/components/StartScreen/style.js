@@ -18,7 +18,7 @@ export const Circle = styled.div`
     height: ${p => p.diameter};
     border-radius: 50%;
     z-index: 0;
-    animation: ${p => p.rotation ? rotate : null} 60s linear infinite;
+    animation: ${p => p.isRotating ? rotate : null} 60s linear infinite;
 `;
 
 export const Container = styled.div`

@@ -20,3 +20,7 @@ it('Contains 1 button', () => {
     const screen = shallow(<StartScreen />);
     expect(screen.containsMatchingElement(<Button />))
 })
+// it('is started pressed', () => {
+//     const screen = shallow(<StartScreen />);
+//     console.log(expect(screen.state()))
+// })
