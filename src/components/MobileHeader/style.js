@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import Colors from '../../Colors'
 
-export const Value = styled.div`
-  position: absolute;
-  width: 100%;
-`
+// export const Container = styled.div`
+//   position: absolute;
+//   width: 100%;
+// `
 export const StyledHeader = styled.div`
 
     display: flex;
-    position: relative;
+    position: absolute;
     width: 100%;
     padding-top: 18px;
     padding-bottom: 10px;

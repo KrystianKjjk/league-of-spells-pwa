@@ -5,23 +5,24 @@ import Speech from './components/Speech';
 import MobileHeader from './components/MobileHeader';
 import styled from "styled-components";
 import Home from './Pages/Home';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useWidth } from './MyHooks/useWidth';
 import BrowserHeader from './components/BrowserHeader/BrowserHeader';
 import ChooseChampions from './Pages/ChooseChampions';
 
 const Container = styled.div`
   /* display: flex; */
-  width: 100wh;
+  width: 100%;
   height: 100vh;
+  overflow-y: auto;
 `;
 
 function App() {
 
-  const header = useWidth(500, <MobileHeader />, <BrowserHeader />).deviceValues;
+  const header = useWidth([500], [<MobileHeader />, <BrowserHeader />]).resultValue;
 
   return (
-    <Router>
+    <BrowserRouter>
       {header}
       <Container >
         <Switch>
@@ -33,7 +34,7 @@ function App() {
           </Route>
         </Switch>
       </Container>
-    </Router>
+    </BrowserRouter>
   );
 }
 

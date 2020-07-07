@@ -5,8 +5,7 @@ import types from './types'
 //     StartedPressed: false
 // }
 
-const distanceReducer = (state = { distance: 0 }, action) => {
-    console.log(state);
+const distanceReducer = (state = { distance: -10 }, action) => {
     switch (action.type) {
         case types.ADD_DISTANCE:
             return {

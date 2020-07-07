@@ -1,9 +1,12 @@
 import React from 'react';
+import { StyledHeader, HeaderTitle } from './style';
 
 const BrowserHeader = props => {
 
     return (
-        <div>BrowserHeader</div>
+        <StyledHeader>
+            <HeaderTitle> BrowserHeader</HeaderTitle>
+        </StyledHeader>
     )
 }
 

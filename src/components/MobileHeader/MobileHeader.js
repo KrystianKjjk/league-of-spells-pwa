@@ -1,18 +1,16 @@
 import React from 'react';
-import { Value, StyledHeader, HeaderTitle, RightItem } from './style'
+import { StyledHeader, HeaderTitle, RightItem } from './style'
 
 const MobileHeader = props => {
     return (
-        <Value >
-            <StyledHeader >
-                <HeaderTitle className="header-title"> League of spells</HeaderTitle>
+        <StyledHeader >
+            <HeaderTitle> League of spells</HeaderTitle>
 
-                <RightItem >
-                    xd
+            <RightItem >
+                xd
                     {props.children}
-                </RightItem>
-            </StyledHeader>
-        </Value>
+            </RightItem>
+        </StyledHeader>
     )
 }
 export default MobileHeader
