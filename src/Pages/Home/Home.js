@@ -28,6 +28,7 @@ const Home = props => {
 
     const dispatch = useDispatch();
     const addDistance = distance => dispatch(actions.addDistance(distance));
+    const resetDistance = () => dispatch(actions.resetDistance());
     const setStartPressed = () => dispatch(actions.setStart());
     const resetStartPressed = () => dispatch(actions.resetStart());
 
@@ -38,7 +39,7 @@ const Home = props => {
         if (distanceV >= 25) {
             resetStartPressed();
             history.push('/choose-champions')
-
+            resetDistance();
         }
     }, [distanceV])
     const handleStart = () => {
@@ -58,7 +59,7 @@ const Home = props => {
                 startedPressed={startedPressedV}
                 cycleDiameter={cycleDiameter}
                 tradingTime={TradingTime}
-                itemNumber={5}
+                itemNumber={6}
             />
             <Button onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} onClick={handleStart} >Start</Button>
 

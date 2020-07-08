@@ -23,11 +23,15 @@ function App() {
 
   return (
     <BrowserRouter>
-      {header}
+      {/* {header} */}
+      <MobileHeader />
       <Container >
         <Switch>
-          <Route path="/choose-champions">
+          <Route exact path="/choose-champions">
             <ChooseChampions />
+          </Route>
+          <Route exact path="/home" >
+            <Home />
           </Route>
           <Route exact path="/" >
             <Home />

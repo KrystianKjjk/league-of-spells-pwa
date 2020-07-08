@@ -1,3 +1,4 @@
 {
-    "styco.disableCodeAction": true
+    "styco.disableCodeAction": true,
+    "prettier.requireConfig": true
 }

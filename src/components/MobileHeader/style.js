@@ -24,7 +24,11 @@ export const HeaderTitle = styled.span`
 `
 export const RightItem = styled.div`
     display: flex;
+    /* border: 2px solid green; */
+    width: 100%;
+    height: 100%;
     position: absolute;
-    right: 5%;
-    align-content: center
-`
+    top: 0;
+    justify-content: flex-end;
+`;
+
