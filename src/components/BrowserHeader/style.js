@@ -4,7 +4,7 @@ import Colors from '../../Colors'
 export const StyledHeader = styled.div`
 
     display: flex;
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
     padding-top: 18px;
     padding-bottom: 10px;

@@ -11,20 +11,21 @@ import BrowserHeader from './components/BrowserHeader/BrowserHeader';
 import ChooseChampions from './Pages/ChooseChampions';
 
 const Container = styled.div`
-  /* display: flex; */
-  width: 100%;
-  height: 100vh;
-  overflow-y: auto;
+  display: flex;
+  width: 100vw;
+  height: 95vh;
+  /* overflow-y: auto; */
+  /* border: 2px solid red; */
 `;
 
 function App() {
 
-  const header = useWidth([500], [<MobileHeader />, <BrowserHeader />]).resultValue;
+  // const header = useWidth([500], [<MobileHeader />, <BrowserHeader />]).resultValue;
 
   return (
     <BrowserRouter>
       {/* {header} */}
-      <MobileHeader />
+      <MobileHeader style={{ height: '5vh' }} />
       <Container >
         <Switch>
           <Route exact path="/choose-champions">

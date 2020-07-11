@@ -61,7 +61,7 @@ const Home = props => {
                 tradingTime={TradingTime}
                 itemNumber={6}
             />
-            <Button onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} onClick={handleStart} >Start</Button>
+            <Button style={{ padding: '40px' }} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} onClick={handleStart} >Start</Button>
 
         </Container>
     )

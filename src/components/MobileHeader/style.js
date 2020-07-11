@@ -8,12 +8,11 @@ import Colors from '../../Colors'
 export const StyledHeader = styled.div`
 
     display: flex;
-    position: absolute;
+    position: relative;
     width: 100%;
-    padding-top: 18px;
-    padding-bottom: 10px;
+    /* padding-top: 18px; */
+    /* padding-bottom: 10px; */
     background: ${Colors.headerBackground};
-
     justify-content: center;
     flex-direction: 'row';
 `

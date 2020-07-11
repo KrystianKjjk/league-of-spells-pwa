@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Colors from './Colors'
 
 export const Button = styled.div`
-    padding: 40px;
     border-radius:50%;
     display: flex;
     font-size: 19px;

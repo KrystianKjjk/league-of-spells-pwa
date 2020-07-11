@@ -4,7 +4,7 @@ import { StyledHeader, HeaderTitle, RightItem } from './style'
 import { useLocation } from 'react-router';
 import BackButton from '../BackButton';
 
-const MobileHeader = props => {
+const MobileHeader = ({ style }) => {
 
     const location = useLocation();
     const locationPathname = location.pathname;
@@ -13,7 +13,7 @@ const MobileHeader = props => {
         ? null
         : <BackButton />
     return (
-        <StyledHeader >
+        <StyledHeader style={style}>
             <HeaderTitle> League of spells</HeaderTitle>
             <RightItem>
                 {ButtonToStart}

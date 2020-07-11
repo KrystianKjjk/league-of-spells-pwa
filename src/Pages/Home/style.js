@@ -10,4 +10,5 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     align-content: center;
+    overflow: hidden;
 `;
