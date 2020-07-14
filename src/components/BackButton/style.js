@@ -21,6 +21,7 @@ export const Container = styled.div`
     align-items: center;
     font-size: 20px;
     margin-right: 5%;
+    transition: transform 0.3s;
     &:hover {
         cursor: pointer;
         /* text-decoration: underline; */

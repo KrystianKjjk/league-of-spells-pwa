@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useHeight } from '../../MyHooks/useHeight';
 import { List } from './style'
 
-const ChampionList = ({ children, champions }) => {
-    const screenHeight = useHeight();
+const ChampionList = ({ children, champions, height, width, style }) => {
     const Row = children;
     return (
-        <List height={screenHeight * 0.3}>
+        <List height={height} style={style}>
             {
                 champions.map((c, idx) => <Row key={idx} champion={c} />)
             }

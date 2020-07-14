@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import ChampionPosition from '../ChampionPosition/';
+import { Positions } from './style';
 
-const AddedChampions = props => {
+const AddedChampions = ({ style, positionStyle }) => {
 
     return (
-        <div style={{ display: 'flex', width: '90%', height: '210px', border: '2px solid black' }}>
-
-        </div>
+        <Positions style={style}>
+            <ChampionPosition position='Top' style={positionStyle} />
+            <ChampionPosition position='Jungle' style={positionStyle} />
+            <ChampionPosition position='mid' style={positionStyle} />
+            <ChampionPosition position='Adc' style={positionStyle} />
+            <ChampionPosition position='support' style={positionStyle} />
+        </Positions>
     )
 }
 
@@ -13,3 +19,4 @@ const AddedChampions = props => {
 export default AddedChampions
 
 // , border: '2px solid black'
+//{ display: 'flex', width: '90%', height: '210px', border: '2px solid black' }

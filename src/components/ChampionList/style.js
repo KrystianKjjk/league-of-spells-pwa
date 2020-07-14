@@ -1,14 +1,19 @@
 import styled from 'styled-components'
+import { border } from '../../border';
 
 
-export const List = styled.div`
-    width: 100%;
-    height: ${props => props.height}px;
+export const List = styled.div.attrs(props => ({
+    style: {
+        height: props.height
+    }
+}))`
+    width: ${props => props.width};
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     overflow-y: auto;
-    align-items: center;
+    /* align-items: center; */
     flex-wrap: wrap;
     justify-content: center;
-    /* border: 2px solid red; */
+    ${border('red')}
+    overflow-x: hidden;
 `;

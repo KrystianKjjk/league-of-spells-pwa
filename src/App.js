@@ -25,7 +25,7 @@ function App() {
   return (
     <BrowserRouter>
       {/* {header} */}
-      <MobileHeader style={{ height: '5vh' }} />
+      <MobileHeader style={{ height: '5vh', minHeight: '40px' }} />
       <Container >
         <Switch>
           <Route exact path="/choose-champions">

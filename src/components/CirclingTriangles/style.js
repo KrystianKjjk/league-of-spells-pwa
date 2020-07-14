@@ -8,7 +8,7 @@ const rotate = keyframes`
         transform: rotate(360deg);
     }
 `;
-export const Circle = styled.div`
+export const Container = styled.div`
 
     display: flex;
     position: absolute;
