@@ -45,9 +45,9 @@ export const Triangle = styled.div`
     margin: 10px;
 	width: 0;
 	height: 0;
-	border-left: 5vw solid transparent;
-	border-right: 5vw solid transparent;
-    border-bottom: 15vw solid #111;
+	border-left: 5vh solid transparent;
+	border-right: 5vh solid transparent;
+    border-bottom: 15vh solid #111;
     z-index: 2;
     top: ${p => p.distanceFromCenter};
     left: ${p => p.distanceFromCenter};

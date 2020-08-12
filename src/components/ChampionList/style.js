@@ -9,10 +9,11 @@ export const List = styled.div.attrs(props => ({
 }))`
     width: ${props => props.width};
     display: flex;
-    /* flex-direction: row; */
+    flex-direction: row;
     overflow-y: auto;
     /* align-items: center; */
     flex-wrap: wrap;
+    align-content:flex-start;
     justify-content: center;
     ${border('red')}
     overflow-x: hidden;

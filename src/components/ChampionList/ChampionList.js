@@ -1,9 +1,17 @@
+//@flow
 import React, { useState, useEffect } from 'react';
 import { useHeight } from '../../MyHooks/useHeight';
 import { List } from './style'
 
-const ChampionList = ({ children, champions, height, width, style }) => {
-    const Row = children;
+type Props = {
+    listItem: any,
+    champions: Array<Object>,
+    height: Number,
+    width: Number,
+    style: any
+}
+const ChampionList = ({ listItem, champions, height, width, style }: Props) => {
+    const Row = listItem;
     return (
         <List height={height} style={style}>
             {

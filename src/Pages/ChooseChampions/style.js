@@ -15,27 +15,18 @@ export const Container = styled.div`
 
 
 `
-export const TableContainer = styled.div`
+export const NotCompletedError = styled.div`
+    /* margin-top: 4%; */
+    position: fixed;
+    bottom: 0%;
     display: flex;
-    flex-wrap: wrap;
-    /* flex-direction: column; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* justify-content: center; */
-    /* align-content: center; */
-    ${border('blue')}
     width: 100%;
-    height: 75vh;
-    @media (max-height: 660px) {
-        height: 70vh;
-    }
-`;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(220,0,0,0.7);
+    padding: 8px;
+    /* border: 2px solid red; */
+    ${border('rgb(255,0, 120)')}
 
-export const narrowList = {
-    width: '48%',
-    height: '100%'
-}
-export const wideList = {
-    width: '100%',
-    // height: '50%'
-}
+
+`

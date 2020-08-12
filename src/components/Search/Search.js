@@ -2,13 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 
 import { Input, SearchedChampions } from './style';
 
-const Search = props => {
+const Search = ({ value, onChange }) => {
 
     const inputRef = useRef(null);
     return (
         <SearchedChampions >
             <span >Search:</span>
-            <Input ref={inputRef} defaultValue="egzample tekst"></Input>
+            <Input ref={inputRef} value={value} onChange={onChange}></Input>
         </SearchedChampions>
     )
 }

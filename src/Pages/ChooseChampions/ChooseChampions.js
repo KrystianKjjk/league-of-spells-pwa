@@ -1,40 +1,51 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Container, Input, SearchedChampions, TableContainer, narrowList, wideList } from './style'
+import React, { useState } from 'react';
+import { Container, NotCompletedError } from './style'
 import { Button } from '../../GlobalStyles';
 
-import { champions } from '../../GameData/champions.json';
-import ChampionList from '../../components/ChampionList/ChampionList';
-import Champion from '../../components/Champion/Champion';
-import AddedChampions from '../../components/AddedChampions/AddedChampions';
 import Search from '../../components/Search/Search';
-import { useHeight } from '../../MyHooks/useHeight';
 import { useWidth } from '../../MyHooks/useWidth';
-import styled from "styled-components";
+import TableContainer from '../../components/TableContainer/TableContainer';
+import { useSelector } from 'react-redux';
+import { hasAllPositionsCompleted } from '../../State/AddedChampions/selectors';
+import { useHistory } from 'react-router';
+import { useTimeout } from '../../MyHooks/useTimeout';
 
 const widthDivider = 650;
-
 const ChooseChampions = props => {
 
-    const { width, resultValue } = useWidth([widthDivider], [wideList, narrowList]);
-    // const allChampions = JSON.parse();
-    // console.log(JSON.parse(JSON.stringify(champions)));
+    const { width } = useWidth();
+    const [searchedChampions, setSearchedChampions] = useState('x')
+    const canSwitchToTimerPage = useSelector(state => hasAllPositionsCompleted(state))
+    const [showNotCompletedPositionError, setShowNotCompletedPositionError] = useState(false)
+
+    useTimeout(() => setShowNotCompletedPositionError(false), 2000, [showNotCompletedPositionError]);
+
+    const history = useHistory()
+
     const handleAccept = (e) => {
-        console.log("accepted");
-
+        canSwitchToTimerPage
+            ? console.log("Push to timer page")
+            : setShowNotCompletedPositionError(true)
     }
-    const screenHeight = useHeight();
-
-    console.log(window.innerWidth);
+    const searchChampion = e => {
+        setSearchedChampions(e.target.value);
+    }
     return (
         <Container>
-            <Search />
-            <TableContainer >
-                <ChampionList style={resultValue} champions={champions} height={width < widthDivider ? (screenHeight > 660 ? '50%' : '35%') : '100%'}>
-                    {Champion}
-                </ChampionList>
-                <AddedChampions style={resultValue} positionStyle={{ width: '100%' }} />
-            </TableContainer>
-            <Button style={{ position: 'absolute', padding: '20px', bottom: '2%', right: width > widthDivider ? null : '2%' }} onClick={handleAccept} >Accept</Button>
+            <Search value={searchedChampions} onChange={searchChampion} />
+            <TableContainer widthDivider={widthDivider} searchedChampions={searchedChampions} />
+            <Button
+                style={{
+                    position: 'absolute',
+                    padding: '20px',
+                    bottom: '2%',
+                    right: width > widthDivider ? null : '2%'
+                }}
+                onClick={handleAccept}
+            >
+                Accept
+            </Button>
+            {showNotCompletedPositionError ? <NotCompletedError> <span>You have to complete all positions to <b> Accept</b></span></NotCompletedError> : null}
         </Container >
     )
 }

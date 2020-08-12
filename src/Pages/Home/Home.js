@@ -5,7 +5,7 @@ import useInterval from '../../MyHooks/useInterval';
 import { Container, Triangle, TriangleX } from './style'
 import { Button } from '../../GlobalStyles';
 import { useSelector, useDispatch } from 'react-redux';
-import actions from './Duck/actions'
+import { actions } from '../../State/StartedPressed'
 import { useHeight } from '../../MyHooks/useHeight';
 import { useHistory } from 'react-router';
 import CirclingItems from '../../components/CirclingItems';
@@ -13,7 +13,7 @@ import CirclingTriangles from '../../components/CirclingTriangles/CirclingTriang
 
 //ostatecznie chyba lepiej zostawic stan w hookach jako useState...
 
-const baseTradingTime = { slow: 60, fast: 2 }
+const baseTurnoverTime = { mouseOut: 60, mouseOver: 4 }
 const intervalBetweenAddDistance = 10;
 
 const Home = props => {
@@ -32,7 +32,7 @@ const Home = props => {
     const setStartPressed = () => dispatch(actions.setStart());
     const resetStartPressed = () => dispatch(actions.resetStart());
 
-    const [TradingTime, setTradingTime] = useState(baseTradingTime.slow);
+    const [TurnoverTime, setTradingTime] = useState(baseTurnoverTime.mouseOut);
     useInterval(() => addDistance(1), startedPressedV ? intervalBetweenAddDistance : null)
 
     useEffect(() => {
@@ -47,10 +47,10 @@ const Home = props => {
         setStartPressed()
     }
     const handleMouseOver = () => {
-        setTradingTime(baseTradingTime.fast);
+        setTradingTime(baseTurnoverTime.mouseOver);
     }
     const handleMouseOut = () => {
-        setTradingTime(baseTradingTime.slow)
+        setTradingTime(baseTurnoverTime.mouseOut)
     }
     return (
         <Container>
@@ -58,7 +58,7 @@ const Home = props => {
                 distance={distanceV}
                 startedPressed={startedPressedV}
                 cycleDiameter={cycleDiameter}
-                tradingTime={TradingTime}
+                tradingTime={TurnoverTime}
                 itemNumber={6}
             />
             <Button style={{ padding: '40px' }} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} onClick={handleStart} >Start</Button>
