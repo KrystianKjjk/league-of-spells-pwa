@@ -4,7 +4,7 @@ import { Positions } from './style';
 import GamePositions from '../../GameData/Positions.json'
 import { useSelector, useDispatch } from 'react-redux';
 import { getAddedChampions } from '../../State/AddedChampions'
-import { addChampion, removeChampion } from '../../State/AddedChampions';
+import { addOrReplaceChampion, removeChampion } from '../../State/AddedChampions';
 
 
 const AddedChampions = ({ style, positionStyle }) => {
@@ -12,11 +12,11 @@ const AddedChampions = ({ style, positionStyle }) => {
     const allChampions = useSelector(state => getAddedChampions(state))
     const dispatch = useDispatch();
 
-    const add = (item) => dispatch(addChampion(item))
+    const addOrReplace = (item) => dispatch(addOrReplaceChampion(item))
     const remove = (item) => dispatch(removeChampion(item))
 
     const moveChampion = (item, position) => {
-        add({ position, item: item.value })
+        addOrReplace({ position, item: item.value })
         //console.log("move champion", item.value);
         //console.log("cham pos", position);
     }

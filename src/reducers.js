@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import { distanceReducer, startedPressedReducer } from './Pages/Home/Duck'
-import { championReducer } from './components/AddedChampions/Duck'
+import { distanceReducer, startedPressedReducer } from './State/StartedPressed'
+import { championReducer } from './State/AddedChampions'
 
 const rootReducer = combineReducers({
     distance: distanceReducer,

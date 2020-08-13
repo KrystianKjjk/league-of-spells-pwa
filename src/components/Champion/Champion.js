@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { Container } from './style'
-import { DragPreviewImage, useDrag } from 'react-dnd'
+import { useDrag } from 'react-dnd'
 import { DraggableItemTypes } from '../../DraggableItemTypes.js'
 
 const Champion = ({ style, champion }) => {
