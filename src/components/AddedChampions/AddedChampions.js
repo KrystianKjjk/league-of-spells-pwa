@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ChampionPosition from '../ChampionPosition/';
 import { Positions } from './style';
 import GamePositions from '../../GameData/Positions.json'
 import { useSelector, useDispatch } from 'react-redux';
 import { getAddedChampions } from '../../State/AddedChampions'
 import { addOrReplaceChampion, removeChampion } from '../../State/AddedChampions';
+import { deselectChampion } from '../../State/SelectedChampion';
 
 
 const AddedChampions = ({ style, positionStyle }) => {
@@ -14,20 +15,22 @@ const AddedChampions = ({ style, positionStyle }) => {
 
     const addOrReplace = (item) => dispatch(addOrReplaceChampion(item))
     const remove = (item) => dispatch(removeChampion(item))
+    const deselect = () => dispatch(deselectChampion())
 
     const moveChampion = (item, position) => {
-        addOrReplace({ position, item: item.value })
-        //console.log("move champion", item.value);
-        //console.log("cham pos", position);
+        addOrReplace({ position, item })
+        deselect();
     }
-    // console.log(Object.getOwnPropertyNames(GamePositions));
-    // const val = Object.getOwnPropertyNames(GamePositions) //Object.getOwnPropertyDescriptors(Object.getOwnPropertyNames(GamePositions));
-    // const val2 = Object.getOwnPropertyDescriptors(GamePositions)
-    //console.log(allChampions)
-    // val.map(v => console.log(v))
 
     const selectChampion = (position) => allChampions.find(c => c.position === position);
-    const Position = ({ position }) => <ChampionPosition position={position} champion={selectChampion(position)} style={positionStyle} moveChampion={moveChampion} />
+    const Position = ({ position }) => (
+        <ChampionPosition
+            position={position}
+            champion={selectChampion(position)}
+            style={positionStyle}
+            moveChampion={moveChampion}
+            onRemove={remove}
+        />)
     return (
         <Positions style={style}>
             <Position position={GamePositions.Position1} />
@@ -38,8 +41,6 @@ const AddedChampions = ({ style, positionStyle }) => {
         </Positions>
     )
 }
-
-
 export default AddedChampions
 
 // , border: '2px solid black'

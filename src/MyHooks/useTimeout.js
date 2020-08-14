@@ -5,5 +5,5 @@ export const useTimeout = (callback, delay, dependency) => {
         return () => {
             clearTimeout(timeout);
         };
-    }, [...dependency]);
+    }, [...dependency, callback, delay]);
 };

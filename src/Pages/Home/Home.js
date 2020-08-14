@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useWidth } from '../../MyHooks/useWidth';
 import useInterval from '../../MyHooks/useInterval';
 
-import { Container, Triangle, TriangleX } from './style'
+import { Container } from './style'
 import { Button } from '../../GlobalStyles';
 import { useSelector, useDispatch } from 'react-redux';
 import { actions } from '../../State/StartedPressed'
 import { useHeight } from '../../MyHooks/useHeight';
 import { useHistory } from 'react-router';
 import CirclingItems from '../../components/CirclingItems';
-import CirclingTriangles from '../../components/CirclingTriangles/CirclingTriangles';
+// import CirclingTriangles from '../../components/CirclingTriangles/CirclingTriangles';
 
 //ostatecznie chyba lepiej zostawic stan w hookach jako useState...
 
@@ -28,9 +28,15 @@ const Home = props => {
 
     const dispatch = useDispatch();
     const addDistance = distance => dispatch(actions.addDistance(distance));
-    const resetDistance = () => dispatch(actions.resetDistance());
+    const resetDistance = useCallback(
+        () => dispatch(actions.resetDistance()),
+        [dispatch],
+    );
     const setStartPressed = () => dispatch(actions.setStart());
-    const resetStartPressed = () => dispatch(actions.resetStart());
+    const resetStartPressed = useCallback(
+        () => dispatch(actions.resetStart()),
+        [dispatch],
+    );
 
     const [TurnoverTime, setTradingTime] = useState(baseTurnoverTime.mouseOut);
     useInterval(() => addDistance(1), startedPressedV ? intervalBetweenAddDistance : null)
@@ -41,7 +47,7 @@ const Home = props => {
             history.push('/choose-champions')
             resetDistance();
         }
-    }, [distanceV])
+    }, [distanceV, history, resetDistance, resetStartPressed])
     const handleStart = () => {
         console.log("START")
         setStartPressed()

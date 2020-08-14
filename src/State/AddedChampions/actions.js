@@ -9,7 +9,7 @@ export const removeChampion = (payload) => ({
     type: REMOVE_CHAMPION,
     payload
 })
-export const resetChampion = () => ({
+export const resetChampions = () => ({
     type: RESET_CHAMPIONS
 })
 

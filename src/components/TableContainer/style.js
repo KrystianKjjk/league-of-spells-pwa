@@ -20,7 +20,7 @@ export const Container = styled.div`
 
 export const narrowList = {
     width: '48%',
-    height: '100%'
+    // height: '100%'
 }
 export const wideList = {
     width: '100%',

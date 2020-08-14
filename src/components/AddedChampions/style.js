@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from "styled-components";
+import styled from "styled-components";
 import { border } from "../../border";
 
 
@@ -10,7 +10,7 @@ export const Positions = styled.div`
     /* align-content: space-around; */
     /* align-items: space-around; */
     ${border('black')}
-    margin-left: 10px;
+    margin: 5px;
 
 `;
 

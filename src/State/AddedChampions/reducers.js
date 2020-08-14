@@ -5,12 +5,10 @@ const initialState = {
 }
 
 export default (state = initialState, { type, payload }) => {
-    console.log("XD")
-    switch (type) {
 
+    switch (type) {
         case ADD_OR_REPLACE_CHAMPION:
             {
-                console.log("PAY", payload);
                 const addedWithGivenPosition = state.addedChampions.find(c => c.position === payload.position)
                 const isChampionAdded = state.addedChampions.find(c => c.item.name === payload.item.name)
 
@@ -31,7 +29,7 @@ export default (state = initialState, { type, payload }) => {
 
             }
         case REMOVE_CHAMPION:
-            return { ...state, addedChampions: state.addedChampions.filter(c => c.name !== payload.name) }
+            return { ...state, addedChampions: state.addedChampions.filter(c => c.item.name !== payload.item.name) }
         case RESET_CHAMPIONS:
             return { ...state, addedChampions: [] }
         default:

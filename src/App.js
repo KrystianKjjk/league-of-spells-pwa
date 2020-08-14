@@ -1,13 +1,13 @@
 import React from 'react';
 
 import './App.css';
-import Speech from './components/Speech';
+// import Speech from './components/Speech';
 import MobileHeader from './components/MobileHeader';
 import styled from "styled-components";
 import Home from './Pages/Home';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useWidth } from './MyHooks/useWidth';
-import BrowserHeader from './components/BrowserHeader/BrowserHeader';
+// import { useWidth } from './MyHooks/useWidth';
+// import BrowserHeader from './components/BrowserHeader/BrowserHeader';
 import ChooseChampions from './Pages/ChooseChampions';
 
 const Container = styled.div`

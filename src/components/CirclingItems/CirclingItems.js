@@ -44,5 +44,5 @@ export default CirclingItems
 // <Circle diameter={cycleDiameter} isRotating={!startedPressed} tradingTime={tradingTime} startRotate={degree + 270}>
 //     <UsedItem distanceFromCenter={distanceAsPercent} />
 // </Circle>
-{/* <UsedItem style={{ bottom: distanceAsPercent, left: distanceAsPercent, transform: 'rotate(45deg)' }} />
-            <UsedItem style={{ top: distanceAsPercent, left: distanceAsPercent, transform: 'rotate(135deg)' }} /> */}
+/* <UsedItem style={{ bottom: distanceAsPercent, left: distanceAsPercent, transform: 'rotate(45deg)' }} />
+    <UsedItem style={{ top: distanceAsPercent, left: distanceAsPercent, transform: 'rotate(135deg)' }} /> */
