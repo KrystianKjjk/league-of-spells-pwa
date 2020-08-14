@@ -9,24 +9,26 @@ const SpellStripe = ({ spellsName, cooldown }) => {
     const [ActualCD, setActualCD] = useState(cooldown)
     const [IsSpellOnCD, setIsSpellOnCD] = useState(false)
 
-    // useInterval(() => {
-    //     if (ActualCD === 0) {
-    //         setIsSpellOnCD(false)
-    //         setActualCD(cooldown)
-    //         return;
-    //     }
-    //     setActualCD(cd => cd - 1)
-    // }, IsSpellOnCD ? 1000 : null)
+    useInterval(() => {
+        if (Math.floor(ActualCD) * 100 === 0) {
+            setIsSpellOnCD(false)
+            setActualCD(cooldown)
+            return;
+        }
+        setActualCD(cd => cd - 0.1)
+    }, IsSpellOnCD ? 100 : null)
+    const style = IsSpellOnCD
+        ? { backgroundColor: Colors.spellOnCD, color: 'white' }
+        : { backgroundColor: Colors.ActiveSpell, color: 'black' }
     return (
-        <Container onClick={() => setIsSpellOnCD(true)}>
+        <Container onClick={() => setIsSpellOnCD(true)} fontColor={IsSpellOnCD ? 'black' : 'white'}>
             <TimeBar
                 width={percentageOfOneIsSecond(ActualCD, cooldown)}
                 backgroundColor={IsSpellOnCD ? Colors.spellOnCD : Colors.ActiveSpell}
             />
-            <Stripe style={{}}>
-                <span>{spellsName}</span><span>{ActualCD}s</span>
+            <span>{spellsName}</span>
+            <span>{Math.floor(ActualCD)}s</span>
 
-            </Stripe>
         </Container>
     )
 }

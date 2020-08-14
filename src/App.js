@@ -14,8 +14,8 @@ import SpellsTimer from './Pages/SpellsTimer/SpellsTimer';
 const Container = styled.div`
   display: flex;
   width: 100vw;
-  height: 93vh;
-  /* overflow-y: auto; */
+  height: 95vh;
+  overflow-y: hidden;
   /* border: 2px solid red; */
 `;
 
@@ -24,9 +24,9 @@ function App() {
   // const header = useWidth([500], [<MobileHeader />, <BrowserHeader />]).resultValue;
 
   return (
-    <BrowserRouter>
+    <BrowserRouter >
       {/* {header} */}
-      <MobileHeader style={{ height: '5vh', minHeight: '40px' }} />
+      <MobileHeader style={{ height: '5vh', minHeight: '35px' }} />
       <Container >
         <Switch>
           <Route exact path="/choose-champions">

@@ -9,8 +9,8 @@ export const Button = styled.div`
     color: white;
     background-color: blue;
     background: ${Colors.buttonBackground};
+    align-items: center;
     transition: transform 0.5s;
-    z-index: 2;
     &:hover {
         cursor: pointer;
         transform: scale(1.1);

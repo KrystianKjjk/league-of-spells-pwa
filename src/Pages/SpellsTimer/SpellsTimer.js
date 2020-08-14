@@ -23,7 +23,7 @@ const SpellsTimer = props => {
     return (
         <Container>
             {addedChampions.map(c => (
-                <ChampionTimer addedChampion={c.item} position={c.position} />
+                <ChampionTimer key={c.position} addedChampion={c.item} position={c.position} />
             ))}
         </Container>
     )

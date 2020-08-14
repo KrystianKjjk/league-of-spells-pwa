@@ -67,7 +67,7 @@ const Home = props => {
                 tradingTime={TurnoverTime}
                 itemNumber={6}
             />
-            <Button size={40} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} onClick={handleStart} >Start</Button>
+            <Button size={40} style={{ zIndex: 2 }} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} onClick={handleStart} >Start</Button>
 
         </Container>
     )
