@@ -39,6 +39,7 @@ const ChampionPosition = ({ position, champion, style, moveChampion, onRemove })
     const isChampionSelected = useSelector(state => isSelected(state));
     const selected = useSelector(state => getSelectedChampions(state));
 
+
     let bgColor;
     if (isOver && canDrop) bgColor = 'yellow'
     else if ((!isOver && canDrop) || isChampionSelected) bgColor = 'green'

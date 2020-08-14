@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Colors from './Colors'
 
 export const Button = styled.div`
+    padding: ${props => props.size || 5}px;
     border-radius:50%;
     display: flex;
     font-size: 19px;

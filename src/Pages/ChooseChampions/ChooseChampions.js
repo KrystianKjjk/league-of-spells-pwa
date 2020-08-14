@@ -24,7 +24,7 @@ const ChooseChampions = props => {
 
     const handleAccept = (e) => {
         canSwitchToTimerPage
-            ? console.log("Push to timer page")
+            ? history.push('/spells-timer')
             : setShowNotCompletedPositionError(true)
     }
     const searchChampion = e => {
@@ -37,10 +37,10 @@ const ChooseChampions = props => {
             <Button
                 style={{
                     position: 'absolute',
-                    padding: '20px',
                     bottom: '2%',
                     right: width > widthDivider ? null : '2%'
                 }}
+                size={18}
                 onClick={handleAccept}
             >
                 Accept

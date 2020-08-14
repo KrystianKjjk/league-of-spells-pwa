@@ -9,11 +9,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // import { useWidth } from './MyHooks/useWidth';
 // import BrowserHeader from './components/BrowserHeader/BrowserHeader';
 import ChooseChampions from './Pages/ChooseChampions';
+import SpellsTimer from './Pages/SpellsTimer/SpellsTimer';
 
 const Container = styled.div`
   display: flex;
   width: 100vw;
-  height: 95vh;
+  height: 93vh;
   /* overflow-y: auto; */
   /* border: 2px solid red; */
 `;
@@ -30,6 +31,9 @@ function App() {
         <Switch>
           <Route exact path="/choose-champions">
             <ChooseChampions />
+          </Route>
+          <Route exact path="/spells-timer">
+            <SpellsTimer />
           </Route>
           <Route exact path="/home" >
             <Home />
