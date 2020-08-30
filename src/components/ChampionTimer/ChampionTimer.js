@@ -4,14 +4,24 @@ import { Container, Header, Modal, Spell, SpellContainer, ButtonContainer } from
 import SpellStripe from '../SpellStripe/SpellStripe';
 import { Button } from '../../GlobalStyles';
 import { spells } from '../../GameData/spells.json'
+import SpellsModal from '../SpellsModal/SpellsModal';
 
 const ChampionTimer = ({ addedChampion, position }) => {
     const [firstSpell, setFirstSpell] = useState(spells[0])
     const [secondSpell, setSecondSpell] = useState(spells[1])
-    const [showModal, setShowModal] = useState(false)
+    const [showModal, setShowModal] = useState(true)
 
     const handleClick = (e) => {
         setShowModal(true)
+    }
+    const handleCloseModal = () => {
+        setShowModal(false)
+    }
+    const handleAcceptData = (newFirstSpell, newSecondSpell) => {
+
+        setFirstSpell(newFirstSpell);
+        setSecondSpell(newSecondSpell);
+        setShowModal(false)
     }
     return (
         <Container>
@@ -26,6 +36,17 @@ const ChampionTimer = ({ addedChampion, position }) => {
 
             </div>
             {showModal
+                && <SpellsModal championName={addedChampion.name} isModalOpen={showModal} onCloseModal={handleCloseModal} onAcceptData={handleAcceptData} />}
+        </Container>
+    )
+}
+
+
+export default ChampionTimer
+
+
+/*
+            {showModal
                 ? (<Modal>
                     <SpellContainer>
                         {spells.map(s => <Spell key={s.name}> {s.name}</Spell>)}
@@ -36,9 +57,4 @@ const ChampionTimer = ({ addedChampion, position }) => {
                     </ButtonContainer>
                 </Modal>)
                 : null}
-        </Container>
-    )
-}
-
-
-export default ChampionTimer
+*/

@@ -1,0 +1,43 @@
+.modal {
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    height: max-content;
+    background-color: rgba(10, 10, 10, 1);
+    animation: modalIncome 0.8s;
+    padding: 8%;
+    justify-content: center;
+    left: 10%;
+    bottom: 0%;
+    right: 10%;
+    /* top: 20%; */
+}
+
+@media (max-width: 700px) {
+    .modal {
+        padding: 3%;
+        left: 3%;
+        right: 3%;
+    }
+
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    display: flex;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+@keyframes modalIncome {
+    from {
+        bottom: -50%;
+    }
+
+    to {
+        bottom: 0%;
+    }
+}
