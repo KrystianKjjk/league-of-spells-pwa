@@ -10,10 +10,10 @@ export const Spell = styled.button`
     height: max-content;
     margin: 15px;
     padding: 10px;
-    background-color: white;
+    background-color: ${props => props.isAdded ? 'yellow' : 'white'};
     border: none;
     box-sizing: border-box;
-${
+    ${
     props => !props.disabled
         && (
             '&: hover{cursor: pointer; font-weight: bold;}'

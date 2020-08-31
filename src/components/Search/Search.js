@@ -2,12 +2,12 @@ import React from 'react';
 
 import { Input, SearchedChampions } from './style';
 
-const Search = ({ value, onChange }) => {
+const Search = (props) => {
 
     return (
         <SearchedChampions >
             <span >Search:</span>
-            <Input value={value} onChange={onChange}></Input>
+            <Input {...props}></Input>
         </SearchedChampions>
     )
 }

@@ -7,10 +7,14 @@ import './style.css';
 const SpellsModal = ({ championName, isModalOpen, onCloseModal, onAcceptData }) => {
 
     const [newSpells, setNewSpells] = useState([])
-    const addNewSpell = (spell) => {
-        console.log("im here");
-
-        setNewSpells(prev => [...prev, spell]);
+    const isMaxNumberOfSpellsGiven = () => newSpells.length === 2;
+    const updateSpells = (spell) => {
+        newSpells.includes(spell)
+            ? removeSpell(spell)
+            : setNewSpells(prev => [...prev, spell]);
+    }
+    const removeSpell = (spell) => {
+        setNewSpells(prev => prev.filter(s => s.name !== spell.name));
     }
     return (
         <Container>
@@ -24,10 +28,26 @@ const SpellsModal = ({ championName, isModalOpen, onCloseModal, onAcceptData }) 
             >
                 <Label>{championName}</Label>
                 <SpellContainer>
-                    {spells.map(s => <Spell key={s.name} onClick={newSpells.length < 2 ? (() => addNewSpell(s)) : null} disabled={newSpells.length >= 2}> {s.name}</Spell>)}
+                    {spells
+                        .map(s =>
+                            <Spell
+                                key={s.name}
+                                onClick={isMaxNumberOfSpellsGiven() ? () => removeSpell(s) : () => updateSpells(s)}
+                                disabled={isMaxNumberOfSpellsGiven() && !newSpells.includes(s)}
+                                isAdded={newSpells.includes(s)}
+                            >
+                                {s.name}
+                            </Spell>
+                        )
+                    }
                 </SpellContainer>
                 <ButtonContainer>
-                    <AcceptButton onClick={() => onAcceptData(newSpells[0], newSpells[1])}>Accept</AcceptButton>
+                    <AcceptButton
+                        onClick={() => onAcceptData(newSpells[0], newSpells[1])}
+                        disabled={!isMaxNumberOfSpellsGiven()}
+                    >
+                        Accept
+                            </AcceptButton>
                     <CancelButton onClick={onCloseModal} >Cancel </CancelButton>
                 </ButtonContainer>
             </Modal>

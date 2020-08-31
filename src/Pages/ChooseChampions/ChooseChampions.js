@@ -14,7 +14,7 @@ const widthDivider = 650;
 const ChooseChampions = props => {
 
     const { width } = useWidth();
-    const [searchedChampions, setSearchedChampions] = useState('x')
+    const [searchedChampions, setSearchedChampions] = useState('')
     const canSwitchToTimerPage = useSelector(state => hasAllPositionsCompleted(state))
     const [showNotCompletedPositionError, setShowNotCompletedPositionError] = useState(false)
 

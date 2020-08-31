@@ -9,7 +9,7 @@ import SpellsModal from '../SpellsModal/SpellsModal';
 const ChampionTimer = ({ addedChampion, position }) => {
     const [firstSpell, setFirstSpell] = useState(spells[0])
     const [secondSpell, setSecondSpell] = useState(spells[1])
-    const [showModal, setShowModal] = useState(true)
+    const [showModal, setShowModal] = useState(false)
 
     const handleClick = (e) => {
         setShowModal(true)
@@ -18,9 +18,10 @@ const ChampionTimer = ({ addedChampion, position }) => {
         setShowModal(false)
     }
     const handleAcceptData = (newFirstSpell, newSecondSpell) => {
-
-        setFirstSpell(newFirstSpell);
-        setSecondSpell(newSecondSpell);
+        if (newFirstSpell !== undefined && newSecondSpell !== undefined) {
+            setFirstSpell(newFirstSpell);
+            setSecondSpell(newSecondSpell);
+        }
         setShowModal(false)
     }
     return (

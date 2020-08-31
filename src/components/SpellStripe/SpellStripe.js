@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { Container, Stripe, TimeBar } from './style'
+import { Container, TimeBar } from './style'
 import useInterval from '../../MyHooks/useInterval';
 import Colors from '../../Colors';
 import percentageOfOneIsSecond from '../../utilities/percentageOfOneIsSecond';
@@ -8,6 +8,11 @@ import percentageOfOneIsSecond from '../../utilities/percentageOfOneIsSecond';
 const SpellStripe = ({ spellsName, cooldown }) => {
     const [ActualCD, setActualCD] = useState(cooldown)
     const [IsSpellOnCD, setIsSpellOnCD] = useState(false)
+
+    useEffect(() => {
+        setActualCD(cooldown);
+        setIsSpellOnCD(false);
+    }, [cooldown])
 
     useInterval(() => {
         if (Math.floor(ActualCD) * 100 === 0) {
@@ -32,7 +37,6 @@ const SpellStripe = ({ spellsName, cooldown }) => {
         </Container>
     )
 }
-
 
 export default SpellStripe
 

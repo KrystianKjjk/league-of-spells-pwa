@@ -3,16 +3,13 @@ import styled from "styled-components";
 
 export const SearchedChampions = styled.div`
     display: flex;
-    /* border: 2px solid yellow; */
-    border-radius: 10px;
+    border-radius: 2px;
     padding: 10px;
     margin: 5px;
     justify-content: center;
     align-items: center;
     background-color: rgba(0,0,90,0.9);
-    /* max-width: 50%; */
     width: 50%;
-    /* margin-top: 10px; */
 
     @media (max-width: 500px) {
     width: 85%;
@@ -24,7 +21,7 @@ export const SearchedChampions = styled.div`
 `;
 
 export const Input = styled.input`
-   border-radius: 10%;
+   border-radius: 2%;
    font-size: 18px;
    background-color: rgba(10,10,10,0.8);
    color: white;
