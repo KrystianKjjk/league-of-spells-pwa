@@ -1,47 +1,78 @@
-import React from 'react';
-import PropTypes from "prop-types";
+import React, { useEffect, useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
+import { SpeechWindow, ListeningInfo, Button, Span } from "./style";
 
-// const propTypes = {
-//     // Props injected by SpeechRecognition
-//     transcript: PropTypes.string,
-//     resetTranscript: PropTypes.func,
-//     browserSupportsSpeechRecognition: PropTypes.bool
-// };
+import { spells } from '../../GameData/spells.json'
+import { positions } from '../../GameData/positions.json'
 
-const Speech = () => {
+const spellsToLower = spells.map(s => s.name.toLocaleLowerCase())
+const positionsToLower = positions.map(p => p.position.toLocaleLowerCase())
 
+const Speech = React.forwardRef(
+    ({ onSpellRecognition }, ref) => {
 
-    const { transcript, finalTranscript, interimTranscript, resetTranscript, listening } = useSpeechRecognition()
+        const [recognizedSpell, setRecognizedSpell] = useState(null)
+        const [recognizedPosition, setRecognizedPosition] = useState(null)
+        const { transcript, finalTranscript, interimTranscript, resetTranscript, listening } = useSpeechRecognition()
 
-    console.log("Hey", transcript);
-    console.log(SpeechRecognition.browserSupportsSpeechRecognition());
+        useEffect(() => {
+            (async () => {
+                // await SpeechRecognition.startListening({ continuous: true, language: 'en-GB' })
+            })()
+            return () => {
+                SpeechRecognition.stopListening()
+            }
+        }, [])
+        useEffect(() => {
+            const interimToLower = interimTranscript.toLocaleLowerCase();
+            const recSpell = spellsToLower.find(s => interimToLower.includes(s))
+            if (recSpell !== undefined) {
+                setRecognizedSpell(recSpell);
+            }
+            const recPosition = positionsToLower.find(p => interimToLower.includes(p))
+            if (recPosition !== undefined) {
+                setRecognizedPosition(recPosition)
+            }
 
-    if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-        return null;
+            if (recognizedSpell !== null && recognizedPosition !== null) {
+                onSpellRecognition(recognizedPosition, recognizedSpell);
+                setRecognizedSpell(null);
+                setRecognizedPosition(null);
+                resetTranscript()
+            }
+            //wywołaj zadanie dla postaci
+            //onSpellRecognition(position, spell);
+
+        }, [interimTranscript, onSpellRecognition])
+
+        if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+            return <SpeechWindow ref={ref}><Span > this browser don't support <br /> Speech Recognition</Span></SpeechWindow>;
+        }
+
+        return (
+            <SpeechWindow ref={ref}>
+                <Span>Dictaphone </Span>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center'
+                }}>
+                    <Button
+                        style={{ backgroundColor: listening ? 'gray' : 'lightgray' }}
+                        onClick={async () => await SpeechRecognition.startListening({ continuous: true })}
+                    >
+                        Start
+                    </Button>
+                    <Button
+                        style={{ backgroundColor: !listening ? 'gray' : 'lightgray' }}
+                        onClick={() => SpeechRecognition.stopListening()}
+                    >
+                        Stop
+                    </Button>
+                </div>
+                {/* <button onClick={() => { resetTranscript(); setMessage('') }}> Reset</button> */}
+                <ListeningInfo>{listening ? "Listening" : "Not listening"}</ListeningInfo>
+            </SpeechWindow>
+        )
     }
-
-    return (
-        <div>
-            <button onClick={async () => await SpeechRecognition.startListening({ continuous: true })}> Start</button>
-            <button onClick={async () => SpeechRecognition.stopListening()}> Stop</button>
-            <button onClick={resetTranscript}> Reset</button>
-            <div>{listening ? "Listening" : "Not listening"}</div>
-            <div style={{ border: '2px solid red' }}>{transcript} : {finalTranscript} : {interimTranscript}</div>
-
-        </div>
-    )
-}
-//Speech.propTypes = propTypes;
-
-//export default SpeechRecognition(Speech);
+)
 export default Speech;
-
-//({
-    //resetTranscript,
-    //browserSupportsSpeechRecognition,
-    //startListening,
-    //stopListening,
-    //listening,
-    //finalTranscript
-//})

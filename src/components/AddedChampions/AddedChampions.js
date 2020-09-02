@@ -1,7 +1,7 @@
 import React from 'react';
 import ChampionPosition from '../ChampionPosition/';
-import { Positions } from './style';
-import GamePositions from '../../GameData/Positions.json'
+import { GamePositions } from './style';
+import { positions } from '../../GameData/positions.json'
 import { useSelector, useDispatch } from 'react-redux';
 import { getAddedChampions } from '../../State/AddedChampions'
 import { addOrReplaceChampion, removeChampion } from '../../State/AddedChampions';
@@ -32,13 +32,16 @@ const AddedChampions = ({ style, positionStyle }) => {
             onRemove={remove}
         />)
     return (
-        <Positions style={style}>
-            <Position position={GamePositions.Position1} />
+        <GamePositions style={style}>
+            {
+                positions.map(p => <Position key={p.position} position={p.position} />)
+            }
+            {/* <Position position={GamePositions.Position1} />
             <Position position={GamePositions.Position2} />
             <Position position={GamePositions.Position3} />
             <Position position={GamePositions.Position4} />
-            <Position position={GamePositions.Position5} />
-        </Positions>
+            <Position position={GamePositions.Position5} /> */}
+        </GamePositions>
     )
 }
 export default AddedChampions

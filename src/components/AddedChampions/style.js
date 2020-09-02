@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { border } from "../../border";
 
 
-export const Positions = styled.div`
+export const GamePositions = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
