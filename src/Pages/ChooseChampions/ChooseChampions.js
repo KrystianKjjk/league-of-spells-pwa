@@ -6,7 +6,7 @@ import Search from '../../components/Search/Search';
 import { useWidth } from '../../MyHooks/useWidth';
 import TableContainer from '../../components/TableContainer/TableContainer';
 import { useSelector } from 'react-redux';
-import { hasAllPositionsCompleted } from '../../State/AddedChampions/selectors';
+import { hasAllPositionsCompleted } from '../../State/AddedChampions';
 import { useHistory } from 'react-router';
 import { useTimeout } from '../../MyHooks/useTimeout';
 

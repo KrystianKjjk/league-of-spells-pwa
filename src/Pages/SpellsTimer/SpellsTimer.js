@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { spells } from '../../GameData/spells.json'
 
+import { useSelector, useDispatch } from 'react-redux';
+import { activeSpell, deactivateSpell } from '../../State/ChampionSpells'
+
 import { Container, SpeechWindow, ShowSpeechWindowButton } from './style'
-import { useSelector } from 'react-redux';
 import { getAddedChampions } from '../../State/AddedChampions';
 import ChampionTimer from '../../components/ChampionTimer';
 import { useHistory } from 'react-router';
@@ -19,6 +21,7 @@ const mockedChampions = [
 const SpellsTimer = props => {
     //console.log(spells);
     const addedChampions = useSelector(state => getAddedChampions(state));
+    const dispatch = useDispatch();
     //const addedChampions = mockedChampions;
     //console.log(addedChampions);
 
@@ -33,8 +36,10 @@ const SpellsTimer = props => {
         setIsHiddenSpeechWindow(prev => !prev)
 
     }
+    const activate = (position) => (spell) => dispatch(activeSpell(position, spell))
+
     const handleSpellRecognition = (position, spell) => {
-        sth()
+        activate(position)(spell);
     }
     const speechRef = useRef()
     const [speechWindowWidth, setSpeechWindowWidth] = useState(0)
@@ -44,15 +49,13 @@ const SpellsTimer = props => {
 
     }, [speechRef.current])
 
-    const sth = () => { }
-
     return (
         <Container>
             <SpeechWindow
                 hiddenWidth={speechWindowWidth}
                 isHidden={isHiddenSpeechWindow}
             >
-                <Speech ref={speechRef} onSpellRecognition={handleSpellRecognition} st={sth} />
+                <Speech ref={speechRef} onSpellRecognition={handleSpellRecognition} />
                 <ShowSpeechWindowButton
                     hide={isHiddenSpeechWindow}
                     onClick={handleShowSpeechWindowClick}
@@ -61,7 +64,7 @@ const SpellsTimer = props => {
                 </ShowSpeechWindowButton>
             </SpeechWindow>
             {addedChampions.map(c => (
-                <ChampionTimer key={c.position} addedChampion={c.item} position={c.position} st={sth} />
+                <ChampionTimer key={c.position} addedChampion={c.item} position={c.position} />
             ))}
         </Container>
     )

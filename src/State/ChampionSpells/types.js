@@ -1,0 +1,5 @@
+export const ADD_SPELL = 'ADD_SPELL'
+export const CHANGE_SPELL = 'CHANGE_SPELL'
+export const ACTIVATE_SPELL = 'ACTIVATE_SPELL'
+export const DEACTIVATE_SPELL = 'DEACTIVATE_SPELL'
+

@@ -47,9 +47,9 @@ export const Triangle = styled.div`
 	height: 0;
 	border-left: 5vh solid transparent;
 	border-right: 5vh solid transparent;
-    border-bottom: 15vh solid #111;
+    border-bottom: 10vh solid #111;
     z-index: 2;
     top: ${p => p.distanceFromCenter};
     left: ${p => p.distanceFromCenter};
-    transform: rotate(100deg);
+    transform: rotate(135deg);
 `;
