@@ -4,6 +4,7 @@ import { SpeechWindow, ListeningInfo, Button, Span } from "./style";
 
 import { spells } from '../../GameData/spells.json'
 import { positions } from '../../GameData/positions.json'
+import FirstCapitalLetter from '../../utilities/FirstCapitalLetter';
 
 const spellsToLower = spells.map(s => s.name.toLocaleLowerCase())
 const positionsToLower = positions.map(p => p.position.toLocaleLowerCase())
@@ -35,7 +36,8 @@ const Speech = React.forwardRef(
             }
 
             if (recognizedSpell !== null && recognizedPosition !== null) {
-                onSpellRecognition(recognizedPosition, recognizedSpell);
+                const correctedPosition = FirstCapitalLetter(recognizedPosition);// recognized position has low letters
+                onSpellRecognition(correctedPosition, recognizedSpell);
                 setRecognizedSpell(null);
                 setRecognizedPosition(null);
                 resetTranscript()

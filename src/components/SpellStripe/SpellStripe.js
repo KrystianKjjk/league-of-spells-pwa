@@ -4,6 +4,7 @@ import { Container, TimeBar } from './style'
 import useInterval from '../../MyHooks/useInterval';
 import Colors from '../../Colors';
 import percentageOfOneIsSecond from '../../utilities/percentageOfOneIsSecond';
+
 const SpellStripe = ({ spell, activate, deactivate }) => {
     const { name, cooldown, isActive } = spell;
 
@@ -16,6 +17,12 @@ const SpellStripe = ({ spell, activate, deactivate }) => {
         isActive && deactivate(spell)
     }, [cooldown])
 
+    useEffect(() => {
+        setIsSpellOnCD(isActive)
+        return () => {
+            setIsSpellOnCD(false);
+        }
+    }, [isActive])
     useInterval(() => {
         if (Math.floor(ActualCD) * 100 === 0) {
             deactivate(spell)
@@ -31,7 +38,7 @@ const SpellStripe = ({ spell, activate, deactivate }) => {
         : { backgroundColor: Colors.ActiveSpell, color: 'black' }
 
     return (
-        <Container onClick={() => { activate(spell); setIsSpellOnCD(true) }} fontColor={IsSpellOnCD ? 'black' : 'white'}>
+        <Container onClick={() => { activate(spell) }} fontColor={IsSpellOnCD ? 'black' : 'white'}>
             <TimeBar
                 width={percentageOfOneIsSecond(ActualCD, cooldown)}
                 backgroundColor={IsSpellOnCD ? Colors.spellOnCD : Colors.ActiveSpell}

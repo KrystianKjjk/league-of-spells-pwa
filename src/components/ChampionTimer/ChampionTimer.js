@@ -11,6 +11,7 @@ import SpellsModal from '../SpellsModal/SpellsModal';
 const championSpellObject = (position, spells) => ({ position, spells: spells.map(s => ({ ...s, isActive: false })) })
 
 const ChampionTimer = ({ addedChampion, position }) => {
+
     const firstSpell = useSelector(state => getFirstChampionSpell(position, state))
     const secondSpell = useSelector(state => getSecondChampionSpell(position, state))
 

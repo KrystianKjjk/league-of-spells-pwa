@@ -9,6 +9,7 @@ import { getAddedChampions } from '../../State/AddedChampions';
 import ChampionTimer from '../../components/ChampionTimer';
 import { useHistory } from 'react-router';
 import Speech from '../../components/Speech/Speech';
+import FirstCapitalLetter from '../../utilities/FirstCapitalLetter';
 
 const mockedChampions = [
     { "position": "Top", "item": { "name": "Aatrox", "ult6CD": 100, "ult11CD": 100, "ult16CD": 100 } },
@@ -36,10 +37,12 @@ const SpellsTimer = props => {
         setIsHiddenSpeechWindow(prev => !prev)
 
     }
-    const activate = (position) => (spell) => dispatch(activeSpell(position, spell))
+    const activate = (position, spell) => dispatch(activeSpell(position, spell))
 
-    const handleSpellRecognition = (position, spell) => {
-        activate(position)(spell);
+    const handleSpellRecognition = (position, spellName) => {
+        const spell = spells.find(s => s.name === spellName)
+        console.log()
+        activate(position, spell);
     }
     const speechRef = useRef()
     const [speechWindowWidth, setSpeechWindowWidth] = useState(0)
