@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import SpellsModal from '../SpellsModal/SpellsModal';
+import SpellStripe from '../SpellStripe/SpellStripe';
 
-import { Container, Header, Modal, Spell, SpellContainer, ButtonContainer } from './style'
+import { Container, Header } from './style'
 import { useSelector, useDispatch } from 'react-redux';
 import { addSpell, changeSpell, activeSpell, deactivateSpell, getFirstChampionSpell, getSecondChampionSpell } from '../../State/ChampionSpells'
-import SpellStripe from '../SpellStripe/SpellStripe';
 import { Button } from '../../GlobalStyles';
 import { spells } from '../../GameData/spells.json'
-import SpellsModal from '../SpellsModal/SpellsModal';
 
 const championSpellObject = (position, spells) => ({ position, spells: spells.map(s => ({ ...s, isActive: false })) })
 
@@ -14,20 +14,22 @@ const ChampionTimer = ({ addedChampion, position }) => {
 
     const firstSpell = useSelector(state => getFirstChampionSpell(position, state))
     const secondSpell = useSelector(state => getSecondChampionSpell(position, state))
-
     const [showModal, setShowModal] = useState(false)
+
     const dispatch = useDispatch()
 
-    const add = (position, spells) => dispatch(addSpell(championSpellObject(position, spells)))
+    const add = useCallback(
+        (position, spells) => dispatch(addSpell(championSpellObject(position, spells))),
+        [dispatch],
+    )
     const change = (position, spells) => dispatch(changeSpell(championSpellObject(position, spells)))
 
     const activate = (position) => (spell) => dispatch(activeSpell(position, spell))
     const deactivate = (position) => (spell) => dispatch(deactivateSpell(position, spell))
 
-
     useEffect(() => {
         add(position, [spells[0], spells[1]])
-    }, [])
+    }, [add, position])
 
     const handleClick = (e) => {
         setShowModal(true)
@@ -62,20 +64,4 @@ const ChampionTimer = ({ addedChampion, position }) => {
     )
 }
 
-
 export default ChampionTimer
-
-
-/*
-            {showModal
-                ? (<Modal>
-                    <SpellContainer>
-                        {spells.map(s => <Spell key={s.name}> {s.name}</Spell>)}
-                    </SpellContainer>
-                    <ButtonContainer>
-                        <button >Accept </button>
-                        <button >Cancel </button>
-                    </ButtonContainer>
-                </Modal>)
-                : null}
-*/

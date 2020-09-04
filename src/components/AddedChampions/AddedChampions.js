@@ -7,7 +7,6 @@ import { getAddedChampions } from '../../State/AddedChampions'
 import { addOrReplaceChampion, removeChampion } from '../../State/AddedChampions';
 import { deselectChampion } from '../../State/SelectedChampion';
 
-
 const AddedChampions = ({ style, positionStyle }) => {
 
     const allChampions = useSelector(state => getAddedChampions(state))
@@ -36,15 +35,7 @@ const AddedChampions = ({ style, positionStyle }) => {
             {
                 positions.map(p => <Position key={p.position} position={p.position} />)
             }
-            {/* <Position position={GamePositions.Position1} />
-            <Position position={GamePositions.Position2} />
-            <Position position={GamePositions.Position3} />
-            <Position position={GamePositions.Position4} />
-            <Position position={GamePositions.Position5} /> */}
         </GamePositions>
     )
 }
 export default AddedChampions
-
-// , border: '2px solid black'
-//{ display: 'flex', width: '90%', height: '210px', border: '2px solid black' }

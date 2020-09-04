@@ -25,24 +25,3 @@ const CirclingItems = ({ distance, startedPressed, cycleDiameter, tradingTime, i
 
 
 export default CirclingItems
-
-// < UsedItem style = {{ top: distanceAsPercent, right: distanceAsPercent, transform: 'rotate(-135deg)' }} />
-//     < UsedItem style = {{ bottom: distanceAsPercent, right: distanceAsPercent, transform: 'rotate(-45deg)' }} />
-//         < UsedItem style = {{ bottom: distanceAsPercent, left: distanceAsPercent, transform: 'rotate(45deg)' }} />
-//             < UsedItem style = {{ top: distanceAsPercent, left: distanceAsPercent, transform: 'rotate(135deg)' }} />
-
-
-// <Circle Circle diameter = { cycleDiameter } isRotating = {!startedPressed} tradingTime = { tradingTime } startRotate = { degree } >
-//     <UsedItem distanceFromCenter={distanceAsPercent} />
-//         </Circle >
-// <Circle diameter={cycleDiameter} isRotating={!startedPressed} tradingTime={tradingTime} startRotate={degree + 90}>
-//     <UsedItem distanceFromCenter={distanceAsPercent} />
-// </Circle>
-// <Circle diameter={cycleDiameter} isRotating={!startedPressed} tradingTime={tradingTime} startRotate={degree + 180}>
-//     <UsedItem distanceFromCenter={distanceAsPercent} />
-// </Circle>
-// <Circle diameter={cycleDiameter} isRotating={!startedPressed} tradingTime={tradingTime} startRotate={degree + 270}>
-//     <UsedItem distanceFromCenter={distanceAsPercent} />
-// </Circle>
-/* <UsedItem style={{ bottom: distanceAsPercent, left: distanceAsPercent, transform: 'rotate(45deg)' }} />
-    <UsedItem style={{ top: distanceAsPercent, left: distanceAsPercent, transform: 'rotate(135deg)' }} /> */

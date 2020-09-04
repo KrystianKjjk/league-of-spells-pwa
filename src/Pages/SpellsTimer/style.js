@@ -1,5 +1,5 @@
 import styled, { keyframes, css } from 'styled-components';
-import { border } from '../../border';
+import { border } from '../../utilities/border';
 
 const leftPosition = (NoPixels) => css`-${NoPixels}px`;
 const windowIncome = (left) => keyframes`

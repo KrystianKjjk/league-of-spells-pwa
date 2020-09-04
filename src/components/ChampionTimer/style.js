@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { border } from '../../border';
+import { border } from '../../utilities/border';
 
 export const Container = styled.div`
     ${border('black')}
@@ -9,7 +9,6 @@ export const Container = styled.div`
     height: max-content;
     margin:3px;
     flex-direction: column;
-    /* margin: 5px; */
     box-sizing: border-box;
 `;
 

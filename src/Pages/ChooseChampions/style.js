@@ -1,6 +1,5 @@
 import styled from "styled-components";
-// import Colors from '../../Colors'
-import { border } from "../../border";
+import { border } from "../../utilities/border";
 
 export const Container = styled.div`
     /* margin-top: 4%; */

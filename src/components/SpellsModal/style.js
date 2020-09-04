@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { border } from '../../border';
+import { border } from '../../utilities/border';
 
 export const Container = styled.div`
 `;
@@ -30,7 +30,6 @@ export const SpellContainer = styled.div`
 export const ButtonContainer = styled.div`
     display: flex;
     flex-direction: row;
-    /* justify-content: space-around; */
     justify-content: flex-end;
     margin: 5px;
     ${border('red')}

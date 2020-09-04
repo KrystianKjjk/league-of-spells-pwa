@@ -1,9 +1,9 @@
 import React from 'react';
+import icon from '../../Icons/wrong.svg';
+
 import { Container, AddedCharacter, PositionName, Img } from './style'
 import { useDrop, useDrag } from 'react-dnd'
-
-import { DraggableItemTypes } from '../../DraggableItemTypes.js'
-import icon from '../../Icons/wrong.svg';
+import { DraggableItemTypes } from '../../utilities/DraggableItemTypes.js'
 import { isSelected, getSelectedChampions } from '../../State/SelectedChampion/';
 import { useSelector } from 'react-redux';
 
@@ -36,9 +36,9 @@ const ChampionPosition = ({ position, champion, style, moveChampion, onRemove })
             canDrag: champion !== undefined
         })
     })
+
     const isChampionSelected = useSelector(state => isSelected(state));
     const selected = useSelector(state => getSelectedChampions(state));
-
 
     let bgColor;
     if (isOver && canDrop) bgColor = 'yellow'

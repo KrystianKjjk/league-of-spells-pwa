@@ -7,7 +7,6 @@ export const BackToStart = styled.div`
     background-repeat: no-repeat;
     width: 35px;
     height: 70%;
-    /* background-color: red; */
     margin: 0px;
     padding: 0px;
     right: 15%;
@@ -24,7 +23,6 @@ export const Container = styled.div`
     transition: transform 0.3s;
     &:hover {
         cursor: pointer;
-        /* text-decoration: underline; */
         transform: scale(1.20);
     }
 `;

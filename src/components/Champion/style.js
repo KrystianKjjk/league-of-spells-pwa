@@ -7,13 +7,12 @@ export const Container = styled.div`
     width: 96%;
     justify-content: center;
     min-width: 125px;
-    background-color: rgba(10,10, 10, 0.9);
+    background-color: ${props => props.isMarked ? 'red' : 'blue'};
     border-radius: 4px;
     color: white;
     transition: transform 0.3s;
     padding: 5px 0px 5px 0px;
     height: 20px;
-    /* flex-direction: column; */
     &:hover {
         transform: scale(1.04);
         cursor: pointer;

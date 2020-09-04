@@ -1,9 +1,9 @@
 import React from 'react';
-
 import ChampionList from '../ChampionList/ChampionList';
 import AddedChampions from '../AddedChampions/AddedChampions';
-import { champions } from '../../GameData/champions.json';
 import Champion from '../../components/Champion/Champion';
+
+import { champions } from '../../GameData/champions.json';
 import { useHeight } from '../../MyHooks/useHeight';
 import { useWidth } from '../../MyHooks/useWidth';
 import { Container, wideList, narrowList } from './style'
@@ -11,7 +11,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { useSelector, useDispatch } from 'react-redux';
 import { getAddedChampions } from '../../State/AddedChampions';
-import { getSelectedChampions, selectChampion, deselectChampion } from '../../State/SelectedChampion';
+import { getSelectedChampions, selectChampion } from '../../State/SelectedChampion';
 
 const TableContainer = ({ widthDivider, searchedChampions }) => {
 
@@ -22,16 +22,11 @@ const TableContainer = ({ widthDivider, searchedChampions }) => {
     const dispatch = useDispatch();
     const selected = useSelector(state => getSelectedChampions(state));
     const select = item => dispatch(selectChampion(item))
-    const deselect = item => dispatch(deselectChampion(item))
-
 
     const filteredChampions = champions
         .filter(c => c.name.toLocaleLowerCase().includes(searchedChampions.toLocaleLowerCase()) && !addedChampions.includes(c.name));
 
-    const handleItemClick = (item) => {
-        // console.log('item clicked', item)
-        select(item);
-    }
+    const handleItemClick = (item) => select(item);
     return (
         <DndProvider backend={HTML5Backend}>
             <Container >
@@ -48,6 +43,4 @@ const TableContainer = ({ widthDivider, searchedChampions }) => {
         </DndProvider>
     )
 }
-
-
 export default TableContainer;

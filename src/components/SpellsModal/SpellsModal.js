@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+
 import { Container, SpellContainer, ButtonContainer, Spell, Label, AcceptButton, CancelButton } from './style'
 import { spells } from '../../GameData/spells.json'
+
 import './style.css';
 
 const SpellsModal = ({ championName, isModalOpen, onCloseModal, onAcceptData }) => {

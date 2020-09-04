@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
-import { SpeechWindow, ListeningInfo, Button, Span } from "./style";
+import FirstCapitalLetter from '../../utilities/FirstCapitalLetter';
 
+import { SpeechWindow, ListeningInfo, Button, Span } from "./style";
 import { spells } from '../../GameData/spells.json'
 import { positions } from '../../GameData/positions.json'
-import FirstCapitalLetter from '../../utilities/FirstCapitalLetter';
 
 const spellsToLower = spells.map(s => s.name.toLocaleLowerCase())
 const positionsToLower = positions.map(p => p.position.toLocaleLowerCase())
 
 const Speech = React.forwardRef(
     ({ onSpellRecognition }, ref) => {
-
+        const speechRecognitionOptions = { continuous: true, language: 'en-GB' }
         const [recognizedSpell, setRecognizedSpell] = useState(null)
         const [recognizedPosition, setRecognizedPosition] = useState(null)
-        const { transcript, finalTranscript, interimTranscript, resetTranscript, listening } = useSpeechRecognition()
+        const { interimTranscript, resetTranscript, listening } = useSpeechRecognition()
 
         useEffect(() => {
             (async () => {
-                // await SpeechRecognition.startListening({ continuous: true, language: 'en-GB' })
+                await SpeechRecognition.startListening(speechRecognitionOptions)
             })()
             return () => {
                 SpeechRecognition.stopListening()
@@ -42,10 +42,8 @@ const Speech = React.forwardRef(
                 setRecognizedPosition(null);
                 resetTranscript()
             }
-            //wywołaj zadanie dla postaci
-            //onSpellRecognition(position, spell);
 
-        }, [interimTranscript, onSpellRecognition])
+        }, [interimTranscript, onSpellRecognition, recognizedPosition, recognizedSpell, resetTranscript])
 
         if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
             return <SpeechWindow ref={ref}><Span > this browser don't support <br /> Speech Recognition</Span></SpeechWindow>;
@@ -60,7 +58,7 @@ const Speech = React.forwardRef(
                 }}>
                     <Button
                         style={{ backgroundColor: listening ? 'gray' : 'lightgray' }}
-                        onClick={async () => await SpeechRecognition.startListening({ continuous: true })}
+                        onClick={async () => await SpeechRecognition.startListening(speechRecognitionOptions)}
                     >
                         Start
                     </Button>
@@ -71,7 +69,6 @@ const Speech = React.forwardRef(
                         Stop
                     </Button>
                 </div>
-                {/* <button onClick={() => { resetTranscript(); setMessage('') }}> Reset</button> */}
                 <ListeningInfo>{listening ? "Listening" : "Not listening"}</ListeningInfo>
             </SpeechWindow>
         )

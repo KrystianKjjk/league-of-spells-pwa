@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { border } from "../../border";
+import { border } from "../../utilities/border";
 
 export const Container = styled.div`
   ${border('green')}
@@ -13,9 +13,7 @@ export const AddedCharacter = styled.div`
   ${border('red')}
   display: flex;
   position: relative;
-
   justify-content: center;
-  /* align-content: center; */
   margin: 5px;
   padding: 5px;
   background-color: rgba(10,10,10, 0.3);
@@ -31,8 +29,7 @@ export const Img = styled.img`
   display: 'flex';
   position:absolute;
   justify-content: 'flex-end';
-right: 5px;
-  /* margin-right: 0px; */
+  right: 5px;
   width: 16px;
   height: 16px;
   transition: transform 0.2s;

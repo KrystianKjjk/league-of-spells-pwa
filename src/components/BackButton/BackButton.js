@@ -1,9 +1,10 @@
 import React from 'react';
 
+import Links from '../../utilities/Links';
+import backIcon from '../../Icons/icons8-back-64-2.png';
 import { Container, BackToStart } from './style'
 import { useWidth } from '../../MyHooks/useWidth';
 import { useHistory } from 'react-router';
-import backIcon from '../../Icons/icons8-back-64-2.png';
 import { useDispatch } from 'react-redux';
 import { resetChampions } from '../../State/AddedChampions';
 import { useCallback } from 'react';
@@ -21,7 +22,7 @@ const BackButton = props => {
     const handleClick = (e) => {
         e.preventDefault();
         reset()
-        history.push("/");
+        history.push(Links.Default);
     }
     return (
         <Container onClick={handleClick}>

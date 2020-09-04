@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import useInterval from '../../MyHooks/useInterval';
+import percentageOfOneIsSecond from '../../utilities/percentageOfOneIsSecond';
 
 import { Container, TimeBar } from './style'
-import useInterval from '../../MyHooks/useInterval';
-import Colors from '../../Colors';
-import percentageOfOneIsSecond from '../../utilities/percentageOfOneIsSecond';
 
 const SpellStripe = ({ spell, activate, deactivate }) => {
     const { name, cooldown, isActive } = spell;
@@ -33,15 +32,11 @@ const SpellStripe = ({ spell, activate, deactivate }) => {
         setActualCD(cd => cd - 0.1)
     }, IsSpellOnCD ? 100 : null)
 
-    const style = IsSpellOnCD
-        ? { backgroundColor: Colors.spellOnCD, color: 'white' }
-        : { backgroundColor: Colors.ActiveSpell, color: 'black' }
-
     return (
-        <Container onClick={() => { activate(spell) }} fontColor={IsSpellOnCD ? 'black' : 'white'}>
+        <Container onClick={() => { activate(spell) }} isActive={IsSpellOnCD}>
             <TimeBar
                 width={percentageOfOneIsSecond(ActualCD, cooldown)}
-                backgroundColor={IsSpellOnCD ? Colors.spellOnCD : Colors.ActiveSpell}
+                isActive={IsSpellOnCD}
             />
             <span>{name}</span>
             <span>{Math.floor(ActualCD)}s</span>
@@ -51,5 +46,3 @@ const SpellStripe = ({ spell, activate, deactivate }) => {
 }
 
 export default SpellStripe
-
-// /style={{ ...styles.loadingSpell, width: `${100 * (ActualCD / cooldown)}%`, backgroundColor: IsSpellOnCD ? Color.spellOnCD : Color.ActiveSpell }}

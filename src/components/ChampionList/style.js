@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { border } from '../../border';
+import { border } from '../../utilities/border';
 
 
 export const List = styled.div.attrs(props => ({
@@ -11,7 +11,6 @@ export const List = styled.div.attrs(props => ({
     display: flex;
     flex-direction: row;
     overflow-y: auto;
-    /* align-items: center; */
     flex-wrap: wrap;
     align-content:flex-start;
     justify-content: center;

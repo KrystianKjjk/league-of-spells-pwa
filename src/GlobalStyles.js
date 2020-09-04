@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Colors from './Colors'
+import Colors from './utilities/Colors'
 
 export const Button = styled.div`
     padding: ${props => props.size || 5}px;
@@ -8,7 +8,7 @@ export const Button = styled.div`
     font-size: 19px;
     color: white;
     background-color: blue;
-    background: ${Colors.buttonBackground};
+    background: ${Colors.mainButtonBackground};
     align-items: center;
     transition: transform 0.5s;
     &:hover {

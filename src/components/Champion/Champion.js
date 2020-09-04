@@ -1,17 +1,9 @@
-import React, { useState, useCallback } from 'react';
-
+import React from 'react';
 import { Container } from './style'
 import { useDrag } from 'react-dnd'
-import { DraggableItemTypes } from '../../DraggableItemTypes.js'
-import { useSelector } from 'react-redux';
-import { getSelectedChampions } from '../../State/SelectedChampion';
+import { DraggableItemTypes } from '../../utilities/DraggableItemTypes.js'
 
 const Champion = ({ style, champion, onClick, isMarked }) => {
-
-    // const selected = useCallback(useSelector(state => getSelectedChampions(state)),
-    //     [],
-    // )
-    // const [isMarked, setIsMarked] = useState(false)
 
     const [{ isDragging }, drag] = useDrag({
         item: { value: champion, type: DraggableItemTypes.CHAMPION },
@@ -23,7 +15,7 @@ const Champion = ({ style, champion, onClick, isMarked }) => {
     return (
         <Container
             ref={drag}
-            style={{ ...style, backgroundColor: isDragging || isMarked ? 'red' : 'blue' }} onClick={e => { onClick(champion, e) }}>
+            isMarked={isDragging || isMarked} onClick={e => { onClick(champion, e) }}>
             {champion.name}
         </Container>
     )

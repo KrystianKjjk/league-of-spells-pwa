@@ -9,7 +9,6 @@ const rotate = (deg) => keyframes`
     }
 `
 export const Container = styled.div`
-
     display: flex;
     position: absolute;
     background-color: transparent;

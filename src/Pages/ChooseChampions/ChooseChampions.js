@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import Links from '../../utilities/Links';
+import Search from '../../components/Search/Search';
+import TableContainer from '../../components/TableContainer/TableContainer';
+
 import { Container, NotCompletedError } from './style'
 import { Button } from '../../GlobalStyles';
-
-import Search from '../../components/Search/Search';
 import { useWidth } from '../../MyHooks/useWidth';
-import TableContainer from '../../components/TableContainer/TableContainer';
 import { useSelector } from 'react-redux';
 import { hasAllPositionsCompleted } from '../../State/AddedChampions';
 import { useHistory } from 'react-router';
@@ -24,7 +25,7 @@ const ChooseChampions = props => {
 
     const handleAccept = (e) => {
         canSwitchToTimerPage
-            ? history.push('/spells-timer')
+            ? history.push(Links.SpellsTimer)
             : setShowNotCompletedPositionError(true)
     }
     const searchChampion = e => {
@@ -49,6 +50,4 @@ const ChooseChampions = props => {
         </Container >
     )
 }
-
-
 export default ChooseChampions
