@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Colors from "../../utilities/Colors";
 
 export const Container = styled.div`
     display: flex;
@@ -7,7 +8,10 @@ export const Container = styled.div`
     width: 96%;
     justify-content: center;
     min-width: 125px;
-    background-color: ${props => props.isMarked ? 'red' : 'blue'};
+    background-color:
+        ${props => props.isMarked
+        ? Colors.championItem.isMarked
+        : Colors.championItem.default};
     border-radius: 4px;
     color: white;
     transition: transform 0.3s;

@@ -57,13 +57,13 @@ const Speech = React.forwardRef(
                     justifyContent: 'center'
                 }}>
                     <Button
-                        style={{ backgroundColor: listening ? 'gray' : 'lightgray' }}
+                        chosen={listening}
                         onClick={async () => await SpeechRecognition.startListening(speechRecognitionOptions)}
                     >
                         Start
                     </Button>
                     <Button
-                        style={{ backgroundColor: !listening ? 'gray' : 'lightgray' }}
+                        chosen={listening}
                         onClick={() => SpeechRecognition.stopListening()}
                     >
                         Stop

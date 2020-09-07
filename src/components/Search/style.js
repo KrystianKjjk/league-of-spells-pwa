@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Colors from "../../utilities/Colors";
 
 
 export const SearchedChampions = styled.div`
@@ -8,7 +9,7 @@ export const SearchedChampions = styled.div`
     margin: 5px;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0,0,90,0.9);
+    background-color: ${Colors.search.background};
     width: 50%;
 
     @media (max-width: 500px) {
@@ -23,7 +24,7 @@ export const SearchedChampions = styled.div`
 export const Input = styled.input`
    border-radius: 2%;
    font-size: 18px;
-   background-color: rgba(10,10,10,0.8);
+   background-color: ${Colors.search.inputBg};
    color: white;
    box-shadow: 0px 2px 5px 0px black;
    padding: 5px;

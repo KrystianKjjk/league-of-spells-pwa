@@ -1,7 +1,7 @@
 import React from 'react';
 import icon from '../../Icons/wrong.svg';
 
-import { Container, AddedCharacter, PositionName, Img } from './style'
+import { Container, AddedCharacter, PositionName, Img, positionBgColor } from './style'
 import { useDrop, useDrag } from 'react-dnd'
 import { DraggableItemTypes } from '../../utilities/DraggableItemTypes.js'
 import { isSelected, getSelectedChampions } from '../../State/SelectedChampion/';
@@ -40,10 +40,8 @@ const ChampionPosition = ({ position, champion, style, moveChampion, onRemove })
     const isChampionSelected = useSelector(state => isSelected(state));
     const selected = useSelector(state => getSelectedChampions(state));
 
-    let bgColor;
-    if (isOver && canDrop) bgColor = 'yellow'
-    else if ((!isOver && canDrop) || isChampionSelected) bgColor = 'green'
-    else if (!isOver && !canDrop) bgColor = 'gray'
+    let bgColor = positionBgColor(isOver, canDrop, isChampionSelected);
+
     return (
         <Container ref={drop} style={{ ...style, backgroundColor: bgColor }} onClick={() => isChampionSelected ? moveChampion(selected, position) : null}>
             <PositionName>{position}</PositionName>
